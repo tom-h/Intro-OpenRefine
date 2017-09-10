@@ -1,7 +1,9 @@
-# Intro-OpenRefine
+# An introduction to OpenRefine
+
 An Introduction to OpenRefine (OR)
 
 ## What is OpenRefine?
+
 OR is a generic data swiss-army knife. Using OR, one can quickly transform structure, filter out irrelevant data, or enrich existing data. The tool itself looks like a glorified spreadsheet editor, and hence the most basic "structure" that can be overlayed over existing data is to place everything into columns and rows.
 
 The idea behind OR is to incorporate it into a larger workflow. Perhaps you are workig with one format, but need another. Perhaps you need a complex subset of a set of data, or maybe you need to merge two separate pieces of data. Along the way, by filtering and faceting, you constrain the data into subsets, run hypotheses about the total data-set, identify and fix irregularities, before spitting the data out again and moving on.
@@ -12,7 +14,7 @@ OR is a service that runs on your computer, and is accessible through your web-b
 
 When opening OR, you are first prompted to open an existing project, or create a new one.
 
-### Creating a new project
+## Creating a new project
 
 To get started, lets load a basic data source: the [language thesaurus](http://www1.aiatsis.gov.au/index.asp). Here's the example from the explanatory header:
 
@@ -31,6 +33,7 @@ Gamilaraay / Gamilaroi / Kamilaroi language (D23) (NSW SH55-12)
 This file uses indentation to indicate hierarchy, abbreviations to differentiate data types (UF, BT, NT), repeats values across lines to indicate further items of the same type, and also line wraps items.
 
 ###### Steps:
+
 * copy the text of the thesaurus
 * `Create Project` > `Clipboard`
 * Cut and paste the core of the document into OR.
@@ -38,37 +41,44 @@ This file uses indentation to indicate hierarchy, abbreviations to differentiate
 * (No checked options)
 * `Project name` => `Language thesaurus`
 
-### The basic interface
+## The basic interface
 
-#### rows
+### rows
+
 Before we get started, notice at the top of the page, that the project lists the number of rows. This number will change based on context. Rember this number: 13290. Unless we do something to _add_ rows, we will generally be operating on a number of rows equal to, or less than this number.
 
-#### pagination
+### pagination
+
 Display of rows is currently limited to 10 at a time. You can easily expand to up to 50 rows in a page. We can then move through the rows a page at a time, or jump to the last page and move backwards.
 
 Pay particular attention to "rows" and "records".If we switch to "records", then we will be viewing 5-50 records per page. Right now, each record is just one row long, but if there are blank rows, or if we have multiple colums and there are blank values in the first column, this affects the size of the record. If you're not careful, the record size can be enormous. Displaying 50 records, with thousands or millions of rows can seize up OR.
 
-#### operations
+### operations
+
 At the top of each column is a downwards pointing arrow. This is a menu of operations that apply in the context of that column. The "All" column has some special operations, some of which apply across the whole project.
 
 For the most part, operations only apply to the current _context_. The current context is the entire dataset. To change the context we must filter or facet.
 
-### Filtering
+## Filtering
+
 The first, and most basic operation is to filter text. On mass, there is a lot of data in this dataset. We want to sift out parts of the file, and operate just on that.
 
 ###### steps:
+
 * `Column 1` menu > `Text filter`
 
 To get a feel for our data, lets search for a few things. Filters (and later Facets) all appear on the left.
 
 There are key phrases in the text. For instance, `(language code)` or `(people)`. Searching for both phrases, we can see already that the number of each in the thesaurus don't match. Searching just for `language` or `people` also returns more results than the more restrictive search... we'll need to be careful!
 
-### Columns
+## Columns
+
 Currently, we just have a flat list of lines. But clearly there's a lot more going on in this data set. If we sift parts of this list into separate columns, we can uncover the structure within it.
 
 To start, lets reconstruct part of the structure of the original file as indicated by indentation. We have headings, and then items grouped under those headings.
 
 ###### steps:
+
 * `Column 1` menu > `Text filter`
 * search for a tab character: `^\t` (check `regular expression`)
 * `Column 1` menu > `Edit column` > `add column based on this one`
@@ -78,7 +88,8 @@ To start, lets reconstruct part of the structure of the original file as indicat
 
 This will create a new column with just the indented items in it.
 
-### Faceting
+## Faceting
+
 Faceting is a kind of filter that agregates values within a column according to a criteria.
 
 The simplest facet is to group based on the value of the cells in a column (Column menu > `Facet` > `Text facet`), but for now, we have too many unique values for this to be useful.
@@ -86,12 +97,14 @@ The simplest facet is to group based on the value of the cells in a column (Colu
 Facets can also be based on a calculated value. For instance, a simple, and extremely common operation is to facet based on whether a cell is blank/empty or not.
 
 ###### steps:
+
 * `indent` menu > `Facet` > `Customized facet` > `Facet by blank`
 * Click `true`
 
 We now have the _inverse_ of the set we matched before. In other words, the values in `Column 1` correspond to the lines that _don't_ start with a tab character. Let's put this in a separate column called `heading`.
 
 ###### steps:
+
 * `Column 1` menu > `Edit column` > `add column based on this one`
 * `New column name` => `heading`
 * Click `OK`
@@ -99,12 +112,14 @@ We now have the _inverse_ of the set we matched before. In other words, the valu
 
 We don't need `Column 1` any more, so we remove it.
 
-### Undo/Redo
+## Undo/Redo
+
 Don't be afraid to delete data! It's easy to step backwards and forwards through the steps in a project. In the left hand panel, there is a tab for `Undo / Redo`. We can jump back to a prior state just by choosing an earlier item in the list.
 
 In addition to this, we can extract a list of operations and reapply them. This is an advanced topic at this stage, however.
 
-### Records
+## Records
+
 We now have the beginnings of a "record" structure. If we switch from `rows` to `records`, items in the `indent` column are grouped under our `heading` values.
 
 Records are extremely useful, and they are determined by the column in the left-most position. With a little care, we can construct multiply-nested structures and operate on any level in that nesting.
@@ -116,12 +131,14 @@ Sometimes it makes sense to switch between items in rows and items in columns. A
 Lets join all the indented cells togther into a single row within the same column. First check that the character(s) we use as a delimiter are not already in use. Search for the `@` symbol in the indent column. We should have zero matches, which means it'll be a suitable delimiter.
 
 ###### steps:
+
 * `indent` menu > `edit cells` > `Join multi-valued cells...`
 * enter `@` and click `OK`
 
 We can reverse what we've done, by splitting each cell it into rows again:
 
 ###### steps:
+
 * `indent` menu > `edit cells` > `Split multi-valued cells...`
 * enter `@` and click `OK`
 
@@ -131,12 +148,14 @@ In a more complicated record structure (one with more columns, with differing nu
 
 Depending on the structure, one needs to be very careful with these operations.
 
-### Categorizing data
+## Categorizing data
+
 Not clear in the thesaurus structure is that the headings fall into several types. Labelling these different types will help us later on to operate on different parts of the whole data set.
 
 For now, lets revert to the grouped version of the indented values. That way we can easily keep the indented values together with their heading while we sort them.
 
-######steps:
+###### steps:
+
 * In the left hand panel, under `Undo / Redo` jump back to step 4 (`Join multi-valued cells in column indent`)
 * filter the `heading` column based on `language code`
 * add column `heading_type` and enter `"language"` as the `expression`
@@ -147,24 +166,28 @@ Our text facet on the `heading_type` column now shows that there are two possibl
 
 We can also combine this with other filtering to further step through our categorization.
 
-######steps:
+###### steps:
+
 * filter on `(people)`
 * edit `(blank)` in the facet, changing it to `people code`
 * clear the filter
 
 Note that you can use the facet to filter results by clicking on the relevant item. You can also sum together facet terms by clicking on `include`. It is also possible to invert the filter, by clicking on `invert`.
 
-### Combining filters and facets
+## Combining filters and facets
+
 One of the truly powerful features of OR is combining multiple facets and filters. Used together, one can slice out precise subsets.
 
 Lets combine the filter and facet to further categorize our headings.
 
-######steps:
+###### steps:
+
 * facet on `(blank)` and filter on `language`
 * edit the `(blank)` facet, changing it to `language term`
 * change the filter to `people`
 
-### Cleaning mistakes in data
+## Cleaning mistakes in data
+
 There is no one way to expose and fix errors in data. It's reasonable to assume though, that in the process of adding structure or transforming data, that irregularities will pop up. The general principle is to avoid hand editing individual cells, and to looks always for patterns that express the irregularities.
 
 Careful use of facets often exposes irregularities. Filtered on `people` note that there is a single `language code` which contains `people`. Faceting on `language code` shows that there is a langauge term which contains the string `people` within it... which is not a problem. Always good to check!
@@ -173,28 +196,41 @@ Switching back to the `(blank)` facet, we can see at the top of the list that th
 
 First, lets exclude the first result by exploiting the fact that there's no space after people in `A50 people`. Changing the filter to include a space knocks out more than one result... clearly there's more going on.
 
-######steps:
+###### steps:
+
 * facet on `(blank)`, add space to end of filter `people `
 * edit `(blank)`, changing it to `people term`
 
 This is probably a good point to think "perhaps I got the language codes wrong too". Jumping back to previous transformations is an ordinary part of working with OR. You may have to Undo, or it may be possible to just edit existing terms again.
 
-######steps:
+A quick way to flag items that you want to return to is to use the `All` menu > `Edit rows` > `Star rows` or `Flag rows`. When finished follow the same path to unstar rows. Use a facet on flags or stars to contrain the view.
+
+###### steps:
+
 * facet on `language term` and similarly filter on `language ` (with a space at the end)
-* temporarily rename `language term` to `regular language term`
+* `All` menu > `Edit rows` > `Star rows`
 * clear the filter, facet on `language term`
+* `All` menu > `Facet` > `By star`
+* Choose `false` in the facet
 
 A quick scan of the unexpected `language term` items shows two patterns: a trailing comma, or a slightly different type: "languages".
 
-######steps:
+###### steps:
+
 * filter on `language,`
-* change facet `language term` to `regular language term`
+* `All` menu > `Edit rows` > `Star rows`
 * filter on `languages`, facet on `langauge term`
 * change facet `language term` to `language group term`
 
-The remaining `language term` values look valid.
+The remaining `language term` values look valid. Remove the stars.
 
-* Change `regular language term` back to `langauge term`.
+* clear the filter
+* facet `Starred Rows`
+* `All` menu > `Edit rows` > `Unstar rows`
+* close the `Starred Rows` facet
+
+Now finish the people terms.
+
 * facet on `(blank)`, filter on `people,`
 * change `(blank)` to `people term`
 * facet on `(blank)`, filter on `moiety`
@@ -209,7 +245,52 @@ By systematically carving up the "problem space" we can expose all sorts of prob
 
 Only when we get down to a handful of irregular forms do we edit cells by hand. Hover over the relevant cells and click edit.
 
-###An Aside on Regular Expressions
-So far, I've been working hard to avoid using regular expressions in search terms. Some of the steps above would have been much more efficient if I had used regular expressions.
+## An Aside on Regular Expressions
 
-Unfortunately, the further we go on, the harder it is to avoid using them. If you do intend to use them, then note that there is a bug in the current version of OR: an incomplete expression involving parentheses () or square brackets [] will make the interface hang. Refreshing the page will bring it back, but you will lose your filters and facets.
+So far, I've been working hard to avoid using regular expressions in search terms. Some of the steps above would have been much more efficient if I had used regular expressions. It is possible to avoid them if you don't know them, and if you think carefully about your use of facets and filters.
+
+However, OR becomes much more powerful if you do use regular expressions. If you do intend to use them, then note that there is a bug in the current version of OR: an incomplete expression involving parentheses `()` or square brackets `[]` will make the interface hang. Refreshing the page will bring it back, but you will lose your filters and facets.
+
+## Sub records
+Consulting the header for the thesaurus, we can see that special codes are used to indicate a relationship between a heading and an item under a heading. Lets extract that relationship and make it more structural.
+
+Without any filters or facets enabled, and using `rows` mode:
+
+###### steps:
+
+* `Indent` menu > `Edit cells` > `Split multi-valued cells...` > `@` > `OK`
+* filter `Indent` column with `USE: ` (check `case sensitive`)
+* `Indent` menu > `Edit column` > `Add column based on this column...`
+* `New column name` => `indent_type`
+* `Expression` => `"use"`
+* `indent_type` menu > `Facet` > `Text facet`
+* filter `Indent` column with `BT: `
+* change `(blank)` facet to `broader term`
+* repeat with "NT: " -> "Narrower Term" and
+* "UF: " -> "Use for"
+
+There is also an undocumented type in the thesaurus: "RT: ".
+
+### Fill down
+
+If we move the `Indent_type` column to the left-most position, we will change the record structure. Before we do that though, first lets "fill down" the values in the `heading` and `heading_type` columns. This looks for any blank cells and copies the last value above it.
+
+###### steps:
+
+* `heading` column > `Edit cells` > `Fill down`
+* `heading_type` column > `Edit cells` > `Fill down`
+
+It can be a good idea to just double check for duplicates before doing this, as when there are consecutive records with the same value, blanking down will destroy that record structure.
+
+( menu > `Facet` > `Customized facets` > `Duplicates facet`)
+
+(Filter out blank cells first using a blanks facet. Duplicates that are not adjacent are not a problem.)
+
+### Restructuring data
+
+If we move the `indent_type` column to the left-most position, we would now have inverted the relationship expressed in `records` mode.
+
+###### steps:
+
+* `Indent_type` menu > `Edit column` > `Move column to beginning`
+* switch to `records` mode## steps
