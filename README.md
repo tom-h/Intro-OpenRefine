@@ -294,3 +294,53 @@ If we move the `indent_type` column to the left-most position, we would now have
 
 * `Indent_type` menu > `Edit column` > `Move column to beginning`
 * switch to `records` mode## steps
+
+## GREL
+
+So far, I've been avoiding touching upon the fact that under the hood is [a simple programming language](https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language) which can be used for contructing custom facets, or for making far more complex transformations on cells.
+
+To use OR for more advanced transformations, it's difficult to avoid occassionally constructing small snippets of code. To get a sense of these snippets, a good place to start is to look at the code underlying some of the pre-programmed facets. Facets don't actually change anything, so feel free to experiment with any facet in the Facets menu.
+
+The most basic is the `Text facet`. This is based just on whatever the value of the cell is. By clicking on `change` for the `language type` facet, we can see that the GREL code is simply `value`.
+
+If we modify this to `value.split(' ')` and click `OK` our facet changes to be based on the words in the categorization. Choosing `language` will now match `language term`, `language group term` and `language code` (because they all contain `language`).
+
+
+## Search and replace
+
+So far, wee've been extracting key data out of our data set, but we've hit a point where we need to modify the data that is there. A basic and common operation that we need to perform is stripping out, or replacing parts of a cell of data.
+
+A basic and built-in transformation is the stripping of certain kinds of white space.
+
+###### steps:
+
+* `indent` menu > `Edit cells` > `Common transforms` > `Trim leading and trailing whitespace`
+* `indent` menu > `Edit cells` > `Common transforms` > `Collapse consecutive whitespace`
+
+Let's also remove the key words at the start of some cells (BT, NT, RT, UF and USE):
+
+###### steps:
+
+* `indent` menu > `Edit cells` > `Transform`
+* `Expression` => `value.replace(/^([BRN]T|UF|USE): /,'')`
+
+This regular expression (between `//`) matches BT, NT, RT, UF and USE. This could instead be expressed by multiple `replace()` operations (e.g., `value.replace('BT: ','').replace('NT: ','').
+
+### Facet by Record size
+
+Facets are filters that categorize the data in a column. When we make custom facets, this massively expands what is possible. For a start, we can define the calculation in whatever way we want, and we can expand beyond a calculation based on individual cells. We can, for instance, expand into neighboring columns, or we can expand a calculation into all rows in a record.
+
+For a basic example, let's facet based on the number of rows in a record. The data in indent includes a mix of line-wrapping and separate items. We want to remove the line-wrapping so that we only deal with a single item per row.
+
+Let's create a custom facet:
+
+###### steps:
+
+* `indent` menu > `Facet` > `Custom text facet...`
+* `Expression` => `row.record.cells.indent.length()`
+
+The facet will change depending on what other facets and filters are active. If we facet by `indent_type` and choose `broader term` we have a small list of 2 and 3 line records. Most broader terms only map onto one term.
+
+## Patterns in data
+
+(Download)[Language-Thesaurus.csv] a further transformed version of the thesaurus, and try to use facets to spot and fix further errors in the data.
