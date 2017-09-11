@@ -4,13 +4,13 @@ An Introduction to OpenRefine (OR)
 
 ## What is OpenRefine?
 
-OR is a generic data swiss-army knife. Using OR, one can quickly transform structure, filter out irrelevant data, or enrich existing data. The tool itself looks like a glorified spreadsheet editor, and hence the most basic "structure" that can be overlayed over existing data is to place everything into columns and rows.
+OR is a generic data swiss-army knife.swiss army Using OR, one can quickly transform structure, filter out irrelevant data, or enrich existing data. The tool itself looks like a glorified spreadsheet editor, and hence the most basic "structure" that can be overlaid over existing data is to place everything into columns and rows.
 
-The idea behind OR is to incorporate it into a larger workflow. Perhaps you are workig with one format, but need another. Perhaps you need a complex subset of a set of data, or maybe you need to merge two separate pieces of data. Along the way, by filtering and faceting, you constrain the data into subsets, run hypotheses about the total data-set, identify and fix irregularities, before spitting the data out again and moving on.
+The idea behind OR is to incorporate it into a larger workflow. Perhaps you are working with one format, but need another. Perhaps you need a complex subset of a set of data, or maybe you need to merge two separate pieces of data. Along the way, by filtering and faceting, you constrain the data into subsets, run hypotheses about the total data-set, identify and fix irregularities, before spitting the data out again and moving on.
 
 ## A first look
 
-OR is a service that runs on your computer, and is accessible through your web-browser at http://127.0.0.1:3333. If the programs appears to stall, then first try loading OR in a new tab or window in your browser, and second, try exiting/quiting the service/application.
+OR is a service that runs on your computer, and is accessible through your web-browser at http://127.0.0.1:3333. If the programs appears to stall, then first try loading OR in a new tab or window in your browser, and second, try exiting/quitting the service/application.
 
 When opening OR, you are first prompted to open an existing project, or create a new one.
 
@@ -45,7 +45,7 @@ This file uses indentation to indicate hierarchy, abbreviations to differentiate
 
 ### rows
 
-Before we get started, notice at the top of the page, that the project lists the number of rows. This number will change based on context. Rember this number: 13290. Unless we do something to _add_ rows, we will generally be operating on a number of rows equal to, or less than this number.
+Before we get started, notice at the top of the page, that the project lists the number of rows. This number will change based on context. Remember this number: 13290. Unless we do something to _add_ rows, we will generally be operating on a number of rows equal to, or less than this number.
 
 ### pagination
 
@@ -90,7 +90,7 @@ This will create a new column with just the indented items in it.
 
 ## Faceting
 
-Faceting is a kind of filter that agregates values within a column according to a criteria.
+Faceting is a kind of filter that aggregates values within a column according to a criteria.
 
 The simplest facet is to group based on the value of the cells in a column (Column menu > `Facet` > `Text facet`), but for now, we have too many unique values for this to be useful.
 
@@ -98,7 +98,7 @@ Facets can also be based on a calculated value. For instance, a simple, and extr
 
 ###### steps:
 
-* `indent` menu > `Facet` > `Customized facet` > `Facet by blank`
+* `indent` menu > `Facet` > `Customised facet` > `Facet by blank`
 * Click `true`
 
 We now have the _inverse_ of the set we matched before. In other words, the values in `Column 1` correspond to the lines that _don't_ start with a tab character. Let's put this in a separate column called `heading`.
@@ -148,7 +148,7 @@ In a more complicated record structure (one with more columns, with differing nu
 
 Depending on the structure, one needs to be very careful with these operations.
 
-## Categorizing data
+## Categorising data
 
 Not clear in the thesaurus structure is that the headings fall into several types. Labelling these different types will help us later on to operate on different parts of the whole data set.
 
@@ -162,9 +162,9 @@ For now, lets revert to the grouped version of the indented values. That way we 
 * `headind_type` menu > `Facet` > `Text facet`
 * clear the filter
 
-Our text facet on the `heading_type` column now shows that there are two possible values: `language` or `(blank)`. In text facets we can change the terms in our categorization on the fly. If we hover over `language` in the facet, we can `edit` and enter `language code`.
+Our text facet on the `heading_type` column now shows that there are two possible values: `language` or `(blank)`. In text facets we can change the terms in our categorisation on the fly. If we hover over `language` in the facet, we can `edit` and enter `language code`.
 
-We can also combine this with other filtering to further step through our categorization.
+We can also combine this with other filtering to further step through our categorisation.
 
 ###### steps:
 
@@ -178,7 +178,7 @@ Note that you can use the facet to filter results by clicking on the relevant it
 
 One of the truly powerful features of OR is combining multiple facets and filters. Used together, one can slice out precise subsets.
 
-Lets combine the filter and facet to further categorize our headings.
+Lets combine the filter and facet to further categorise our headings.
 
 ###### steps:
 
@@ -190,9 +190,9 @@ Lets combine the filter and facet to further categorize our headings.
 
 There is no one way to expose and fix errors in data. It's reasonable to assume though, that in the process of adding structure or transforming data, that irregularities will pop up. The general principle is to avoid hand editing individual cells, and to looks always for patterns that express the irregularities.
 
-Careful use of facets often exposes irregularities. Filtered on `people` note that there is a single `language code` which contains `people`. Faceting on `language code` shows that there is a langauge term which contains the string `people` within it... which is not a problem. Always good to check!
+Careful use of facets often exposes irregularities. Filtered on `people` note that there is a single `language code` which contains `people`. Faceting on `language code` shows that there is a language term which contains the string `people` within it... which is not a problem. Always good to check!
 
-Switching back to the `(blank)` facet, we can see at the top of the list that there is a formatting error for one of the values. For `A50 people` we would have expected that it should have the form `A50 (people)`. We could edit the cell, or we could just add `people code` for that one item, but it is usually better to figure out if there is something more sytematic going on.
+Switching back to the `(blank)` facet, we can see at the top of the list that there is a formatting error for one of the values. For `A50 people` we would have expected that it should have the form `A50 (people)`. We could edit the cell, or we could just add `people code` for that one item, but it is usually better to figure out if there is something more systematic going on.
 
 First, lets exclude the first result by exploiting the fact that there's no space after people in `A50 people`. Changing the filter to include a space knocks out more than one result... clearly there's more going on.
 
@@ -203,7 +203,7 @@ First, lets exclude the first result by exploiting the fact that there's no spac
 
 This is probably a good point to think "perhaps I got the language codes wrong too". Jumping back to previous transformations is an ordinary part of working with OR. You may have to Undo, or it may be possible to just edit existing terms again.
 
-A quick way to flag items that you want to return to is to use the `All` menu > `Edit rows` > `Star rows` or `Flag rows`. When finished follow the same path to unstar rows. Use a facet on flags or stars to contrain the view.
+A quick way to flag items that you want to return to is to use the `All` menu > `Edit rows` > `Star rows` or `Flag rows`. When finished follow the same path to unstar rows. Use a facet on flags or stars to constrain the view.
 
 ###### steps:
 
@@ -219,7 +219,7 @@ A quick scan of the unexpected `language term` items shows two patterns: a trail
 
 * filter on `language,`
 * `All` menu > `Edit rows` > `Star rows`
-* filter on `languages`, facet on `langauge term`
+* filter on `languages`, facet on `language term`
 * change facet `language term` to `language group term`
 
 The remaining `language term` values look valid. Remove the stars.
@@ -299,11 +299,11 @@ If we move the `indent_type` column to the left-most position, we would now have
 
 So far, I've been avoiding touching upon the fact that under the hood is [a simple programming language](https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language) which can be used for contructing custom facets, or for making far more complex transformations on cells.
 
-To use OR for more advanced transformations, it's difficult to avoid occassionally constructing small snippets of code. To get a sense of these snippets, a good place to start is to look at the code underlying some of the pre-programmed facets. Facets don't actually change anything, so feel free to experiment with any facet in the Facets menu.
+To use OR for more advanced transformations, it's difficult to avoid occasionally constructing small snippets of code. To get a sense of these snippets, a good place to start is to look at the code underlying some of the pre-programmed facets. Facets don't actually change anything, so feel free to experiment with any facet in the Facets menu.
 
 The most basic is the `Text facet`. This is based just on whatever the value of the cell is. By clicking on `change` for the `language type` facet, we can see that the GREL code is simply `value`.
 
-If we modify this to `value.split(' ')` and click `OK` our facet changes to be based on the words in the categorization. Choosing `language` will now match `language term`, `language group term` and `language code` (because they all contain `language`).
+If we modify this to `value.split(' ')` and click `OK` our facet changes to be based on the words in the categorisation. Choosing `language` will now match `language term`, `language group term` and `language code` (because they all contain `language`).
 
 
 ## Search and replace
@@ -326,9 +326,9 @@ Let's also remove the key words at the start of some cells (BT, NT, RT, UF and U
 
 This regular expression (between `//`) matches BT, NT, RT, UF and USE. This could instead be expressed by multiple `replace()` operations (e.g., `value.replace('BT: ','').replace('NT: ','').
 
-### Facet by Record size
+## Facet by Record size
 
-Facets are filters that categorize the data in a column. When we make custom facets, this massively expands what is possible. For a start, we can define the calculation in whatever way we want, and we can expand beyond a calculation based on individual cells. We can, for instance, expand into neighboring columns, or we can expand a calculation into all rows in a record.
+Facets are filters that categorise the data in a column. When we make custom facets, this massively expands what is possible. For a start, we can define the calculation in whatever way we want, and we can expand beyond a calculation based on individual cells. We can, for instance, expand into neighboring columns, or we can expand a calculation into all rows in a record.
 
 For a basic example, let's facet based on the number of rows in a record. The data in indent includes a mix of line-wrapping and separate items. We want to remove the line-wrapping so that we only deal with a single item per row.
 
@@ -343,4 +343,4 @@ The facet will change depending on what other facets and filters are active. If 
 
 ## Patterns in data
 
-(Download)[Language-Thesaurus.csv] a further transformed version of the thesaurus, and try to use facets to spot and fix further errors in the data.
+[Download](Language-Thesaurus.csv) a further transformed version of the thesaurus, and try to use facets to spot and fix further errors in the data.
