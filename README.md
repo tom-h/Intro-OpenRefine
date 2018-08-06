@@ -53,13 +53,13 @@ Before we get started, notice at the top of the page, that the project lists the
 
 Display of rows is currently limited to 10 at a time. You can easily expand to up to 50 rows in a page. We can then move through the rows a page at a time, or jump to the last page and move backwards.
 
-Pay particular attention to "rows" and "records".If we switch to "records", then we will be viewing 5-50 records per page. Right now, each record is just one row long, but if there are blank rows, or if we have multiple colums and there are blank values in the first column, this affects the size of the record. If you're not careful, the record size can be enormous. Displaying 50 records, with thousands or millions of rows can seize up OR.
+Pay particular attention to `rows` and `records`. If we switch to `records`, then we will be viewing 5-50 records per page. Right now, each record is just one row long, but if there are blank rows, or if we have multiple colums and there are blank values in the first column, this affects the size of the record. If you're not careful, the record size can be enormous. Displaying 50 records, with thousands or millions of rows can seize up OR.
 
 ### operations
 
-At the top of each column is a downwards pointing arrow. This is a menu of operations that apply in the context of that column. The "All" column has some special operations, some of which apply across the whole project.
+At the top of each column is a downwards pointing arrow. This is a menu of operations that can be applied to that column. The `All` column has some special operations, some of which apply across all columns.
 
-For the most part, operations only apply to the current _context_. The current context is the entire dataset. To change the context we must filter or facet.
+For the most part, operations only apply to the current _context_ (or what is visible or filtered). The current context is the entire dataset. To change the context we must filter or facet to examine subsets of the overall dataset.
 
 ## Filtering
 
@@ -69,9 +69,9 @@ The first, and most basic operation is to filter text. On mass, there is a lot o
 
 * `Column 1` menu > `Text filter`
 
-To get a feel for our data, lets search for a few things. Filters (and later Facets) all appear on the left.
+To get a feel for our data, lets search for a few things. Filters (and later Facets) all appear on the left of the page. We can have multiple filters and facets. Notice we can remove a filter by clicking on the close button (`x`).
 
-There are key phrases in the text. For instance, `(language code)` or `(people)`. Searching for both phrases, we can see already that the number of each in the thesaurus don't match. Searching just for `language` or `people` also returns more results than the more restrictive search... we'll need to be careful!
+There are key phrases in the text. For instance, `(language code)` or `(people)`. Searching for both phrases, we can see already that the number of each in the thesaurus don't match, so it looks like there are some inconsistencies in the data. Searching just for `language` or `people` also returns more results than the more restrictive search... we'll need to be careful!
 
 ## Columns
 
@@ -81,7 +81,7 @@ To start, lets reconstruct part of the structure of the original file as indicat
 
 ###### steps:
 
-* `Column 1` menu > `Text filter`
+* `Column 1` menu > `Text filter` (if you don't still have the filter there)
 * search for a tab character: `^\t` (check `regular expression`)
 * `Column 1` menu > `Edit column` > `add column based on this one`
 * `New column name` => `indent`
@@ -96,7 +96,7 @@ Faceting is a kind of filter that aggregates values within a column according to
 
 The simplest facet is to group based on the value of the cells in a column (Column menu > `Facet` > `Text facet`), but for now, we have too many unique values for this to be useful.
 
-Facets can also be based on a calculated value. For instance, a simple, and extremely common operation is to facet based on whether a cell is blank/empty or not.
+Facets can also be based on a calculated value. For instance: a simple, and extremely common operation is to facet based on whether a cell is blank/empty or not.
 
 ###### steps:
 
