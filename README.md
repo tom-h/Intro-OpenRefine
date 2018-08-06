@@ -1,6 +1,6 @@
 # An introduction to OpenRefine
 
-An Introduction to OpenRefine (OR)
+This is an introduction to OpenRefine (henceforth "OR"). The aim is to learn by doing. We will work through cleaning and enhancing a dataset, and in doing so, will be introduced to the many features of OR.
 
 ## What is OpenRefine?
 
@@ -30,7 +30,11 @@ Gamilaraay / Gamilaroi / Kamilaroi language (D23) (NSW SH55-12)
 		SH55-7)
 
 ```
-This file uses a lot of convention to inidicate all kinds of structure. Indentation indicates a hierarchical structure, and a blank line separates records. The first unindented line starts a record. Abbreviations are used to differentiate subsections containing different types of data (UF, BT, NT). Multiple alternate terms are separated by "/", and multiple related codes are given between parentheses (e.g., D15, D23, D39 are AIATSIS language codes). Within each sub-section, separate lines indicate  a link to another record which is related in some way, but note looking at the last line, that some lines wrap over.
+This file uses a lot of convention to inidicate all kinds of structure, and types of information. See the [help page](http://www1.aiatsis.gov.au/language/LanguageHelp.asp) at AIATSIS for further detail.
+
+Indentation indicates a hierarchical structure, and a blank line separates records. The first unindented line starts a record. Abbreviations are used to differentiate subsections containing different types of data (UF "Use for", BT "Broader term", NT "Narrower term", RT "Related term"). Within each sub-section, separate lines indicate  a link to another record which is related in some way, but note looking at the last line, that some lines wrap around onto the next line.
+
+One (or more) terms may be followed by a type (e.g., a language, language group, language code). There may be synonymous terms separated by a "/". After the term and it't type one or more related codes may be given between parentheses. There are the unique identifiers used by AIATSIS to refer to languages, language groups, language codes and peoples (e.g., D15, D23, D39). Second there are map grid references (e.g., NSW SH55-12, Qld SH55-16).
 
 In this tutorial, we are going to extract all of this structure and check that it is valid.
 
