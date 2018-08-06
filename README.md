@@ -4,9 +4,9 @@ An Introduction to OpenRefine (OR)
 
 ## What is OpenRefine?
 
-OR is a generic data swiss-army knife.swiss army Using OR, one can quickly transform structure, filter out irrelevant data, or enrich existing data. The tool itself looks like a glorified spreadsheet editor, and hence the most basic "structure" that can be overlaid over existing data is to place everything into columns and rows.
+OR is a generic data swiss-army knife. Using OR, one can quickly transform structure, filter out irrelevant data, or enrich existing data. The tool itself looks like a glorified spreadsheet editor, and hence the most basic "structure" that can be overlaid over existing data is to place everything into columns and rows.
 
-The idea behind OR is to incorporate it into a larger workflow. Perhaps you are working with one format, but need another. Perhaps you need a complex subset of a set of data, or maybe you need to merge two separate pieces of data. Along the way, by filtering and faceting, you constrain the data into subsets, run hypotheses about the total data-set, identify and fix irregularities, before spitting the data out again and moving on.
+The idea behind OR is to incorporate it into a larger workflow. Perhaps you are working with one format, but need another. Perhaps you need to extract a subset of a larger set of data, or maybe you need to merge two separate pieces of data into one. Along the way, by filtering and faceting, you constrain the data into subsets, test hypotheses about the total data-set, identify and fix irregularities, before spitting the data out again and moving on.
 
 ## A first look
 
@@ -16,7 +16,7 @@ When opening OR, you are first prompted to open an existing project, or create a
 
 ## Creating a new project
 
-To get started, lets load a basic data source: the [language thesaurus](http://www1.aiatsis.gov.au/index.asp). Here's the example from the explanatory header:
+To get started, lets load a basic data source: a [language thesaurus](http://www1.aiatsis.gov.au/index.asp) provided by [AIATSIS](https://aiatsis.gov.au). This thesaurus is a catalogue of language names. Here's the example from the explanatory header:
 
 ```
 Gamilaraay / Gamilaroi / Kamilaroi language (D23) (NSW SH55-12)
@@ -30,7 +30,9 @@ Gamilaraay / Gamilaroi / Kamilaroi language (D23) (NSW SH55-12)
 		SH55-7)
 
 ```
-This file uses indentation to indicate hierarchy, abbreviations to differentiate data types (UF, BT, NT), repeats values across lines to indicate further items of the same type, and also line wraps items.
+This file uses a lot of convention to inidicate all kinds of structure. Indentation indicates a hierarchical structure, and a blank line separates records. The first unindented line starts a record. Abbreviations are used to differentiate subsections containing different types of data (UF, BT, NT). Multiple alternate terms are separated by "/", and multiple related codes are given between parentheses (e.g., D15, D23, D39 are AIATSIS language codes). Within each sub-section, separate lines indicate  a link to another record which is related in some way, but note looking at the last line, that some lines wrap over.
+
+In this tutorial, we are going to extract all of this structure and check that it is valid.
 
 ###### Steps:
 
