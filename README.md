@@ -32,7 +32,7 @@ Gamilaraay / Gamilaroi / Kamilaroi language (D23) (NSW SH55-12)
 ```
 This file uses a lot of convention to inidicate all kinds of structure, and types of information. See the [help page](http://www1.aiatsis.gov.au/language/LanguageHelp.asp) at AIATSIS for further detail.
 
-Indentation indicates a hierarchical structure, and a blank line separates records. The first unindented line starts a record. Abbreviations are used to differentiate subsections containing different types of data (UF "Use for", BT "Broader term", NT "Narrower term", RT "Related term"). Within each sub-section, separate lines indicate  a link to another record which is related in some way, but note looking at the last line, that some lines wrap around onto the next line.
+Indentation indicates a hierarchical structure, and a blank line separates records. The first unindented line starts a record. Abbreviations are used to differentiate subsections containing different types of data (UF "Use for", BT "Broader term", NT "Narrower term", RT "Related term", USE "Use for"). Within each sub-section, separate lines indicate  a link to another record which is related in some way, but note looking at the last line, that some lines wrap around onto the next line.
 
 One (or more) terms may be followed by a type (e.g., a language, language group, language code). There may be synonymous terms separated by a "/". After the term and it't type one or more related codes may be given between parentheses. There are the unique identifiers used by AIATSIS to refer to languages, language groups, language codes and peoples (e.g., D15, D23, D39). Second there are map grid references (e.g., NSW SH55-12, Qld SH55-16).
 
@@ -49,17 +49,17 @@ In this tutorial, we are going to extract all of this structure and check that i
 
 ## The basic interface
 
-### rows
+### Rows
 
 Before we get started, notice at the top of the page, that the project lists the number of rows. This number will change based on context. Remember this number: 13290. Unless we do something to _add_ rows, we will generally be operating on a number of rows equal to, or less than this number.
 
-### pagination
+### Pagination
 
 Display of rows is currently limited to 10 at a time. You can easily expand to up to 50 rows in a page. We can then move through the rows a page at a time, or jump to the last page and move backwards.
 
 Pay particular attention to `rows` and `records`. If we switch to `records`, then we will be viewing 5-50 records per page. Right now, each record is just one row long, but if there are blank rows, or if we have multiple colums and there are blank values in the first column, this affects the size of the record. If you're not careful, the record size can be enormous. Displaying 50 records, with thousands or millions of rows can seize up OR.
 
-### operations
+### Operations
 
 At the top of each column is a downwards pointing arrow. This is a menu of operations that can be applied to that column. The `All` column has some special operations, some of which apply across all columns.
 
@@ -73,9 +73,19 @@ The first, and most basic operation is to filter text. On mass, there is a lot o
 
 * `Column 1` menu > `Text filter`
 
-To get a feel for our data, lets search for a few things. Filters (and later Facets) all appear on the left of the page. We can have multiple filters and facets. Notice we can remove a filter by clicking on the close button (`x`).
+To get a feel for our data, lets search for a few things. Filters (and later Facets) all appear on the left of the page. We can have multiple filters and facets.
 
 There are key phrases in the text. For instance, `(language code)` or `(people)`. Searching for both phrases, we can see already that the number of each in the thesaurus don't match, so it looks like there are some inconsistencies in the data. Searching just for `language` or `people` also returns more results than the more restrictive search... we'll need to be careful!
+
+We can add more than one filter to search for two things at once. Create a second filter:
+
+###### steps:
+
+* `Column 1` menu > `Text filter`
+
+Now we can filter for the intersection or overlap of two different searches. For instance, put `USE:` in one filter, and `
+
+Notice we can remove a filter by clicking on the close button (`x`).
 
 ## Columns
 
