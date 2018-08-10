@@ -2,6 +2,12 @@
 
 This is an introduction to OpenRefine (henceforth "OR"). The aim is to learn by doing. We will work through cleaning and enhancing a dataset, and in doing so, will be introduced to the many features of OR.
 
+###### before we get started:
+
+At a certain point in this tutorial, we will start to use regular expressions. This is a special shorthand way of referring to _patterns_ in text. It is _extremely_ useful for doing text wrangling and searching. See [this|https://www.regular-expressions.info/quickstart.html] quickstart guide if you'd like a quick primer on the basics. I'd suggest reading up to and including the section on "Repetition."
+
+However, this introduction avoids the use of regular expressions as much as possible, and explains the regular expression when it's used.
+
 ## What is OpenRefine?
 
 OR is a generic data swiss-army knife. Using OR, one can quickly transform structure, filter out irrelevant data, or enrich existing data. The tool itself looks like a glorified spreadsheet editor, and hence the most basic "structure" that can be overlaid over existing data is to place everything into columns and rows.
@@ -83,13 +89,13 @@ We can add more than one filter to search for two things at once. Create a secon
 
 * `Column 1` menu > `Text filter`
 
-Now we can filter for the intersection or overlap of two different searches. For instance, put `USE:` in one filter, and `
+Now we can filter for the intersection or overlap of two different searches. For instance, put `USE:` in one filter, and `(language code)` in the other. These two terms do not occur together on one line.
 
-Notice we can remove a filter by clicking on the close button (`x`).
+We can remove a filter by clicking on the close button (`x`). Remove one of the filters to continue.
 
 ## Columns
 
-Currently, we just have a flat list of lines. But clearly there's a lot more going on in this data set. If we sift parts of this list into separate columns, we can uncover the structure within it.
+Currently, we just have a flat list of lines. But clearly there's a lot more going on in this data set. If we sift parts of this list into separate columns, we can reveal and confirm the structure within it, and eventually transform it into a different structure.
 
 To start, lets reconstruct part of the structure of the original file as indicated by indentation. We have headings, and then items grouped under those headings.
 
