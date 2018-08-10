@@ -44,7 +44,9 @@ One (or more) terms may be followed by a type (e.g., a language, language group,
 
 In this tutorial, we are going to extract all of this structure and check that it is valid.
 
-###### Steps:
+----
+
+###### steps:
 
 * copy the text of the thesaurus
 * `Create Project` > `Clipboard`
@@ -52,6 +54,8 @@ In this tutorial, we are going to extract all of this structure and check that i
 * `Next` > `Line based text files`
 * (No checked options)
 * `Project name` => `Language thesaurus`
+
+----
 
 ## The basic interface
 
@@ -75,9 +79,13 @@ For the most part, operations only apply to the current _context_ (or what is vi
 
 The first, and most basic operation is to filter text. On mass, there is a lot of data in this dataset. We want to sift out parts of the file, and operate just on that.
 
+----
+
 ###### steps:
 
 * `Column 1` menu > `Text filter`
+
+----
 
 To get a feel for our data, lets search for a few things. Filters (and later Facets) all appear on the left of the page. We can have multiple filters and facets.
 
@@ -85,9 +93,13 @@ There are key phrases in the text. For instance, `(language code)` or `(people)`
 
 We can add more than one filter to search for two things at once. Create a second filter:
 
+----
+
 ###### steps:
 
 * `Column 1` menu > `Text filter`
+
+----
 
 Now we can filter for the intersection or overlap of two different searches. For instance, put `USE:` in one filter, and `(language code)` in the other. These two terms do not occur together on one line.
 
@@ -99,6 +111,8 @@ Currently, we just have a flat list of lines. But clearly there's a lot more goi
 
 To start, lets reconstruct part of the structure of the original file as indicated by indentation. We have headings, and then items grouped under those headings.
 
+----
+
 ###### steps:
 
 * `Column 1` menu > `Text filter` (if you don't still have the filter there)
@@ -107,6 +121,8 @@ To start, lets reconstruct part of the structure of the original file as indicat
 * `New column name` => `indent`
 * Click `OK`
 * clear the filter
+
+----
 
 This will create a new column with just the indented items in it.
 
@@ -118,12 +134,22 @@ The simplest facet is to group based on the value of the cells in a column (Colu
 
 Facets can also be based on a calculated value. For instance: a simple, and extremely common operation is to facet based on whether a cell is blank/empty or not.
 
+----
+
 ###### steps:
 
 * `indent` menu > `Facet` > `Customised facet` > `Facet by blank`
 * Click `true`
 
-We now have the _inverse_ of the set we matched before. In other words, the values in `Column 1` correspond to the lines that _don't_ start with a tab character. Let's put this in a separate column called `heading`.
+----
+
+We now have the _inverse_ of the set we matched before. In other words, the values in `Column 1` correspond to the lines that _don't_ start with a tab character.
+
+_(Eagle-eyed participants may have noticed that clicking on `invert` when we had a filter for lines with tabs, we would have got the same result. There is usually multiple ways to achieve the same thing in OR!)_
+
+Let's put this in a separate column called `heading`.
+
+----
 
 ###### steps:
 
@@ -132,6 +158,8 @@ We now have the _inverse_ of the set we matched before. In other words, the valu
 * Click `OK`
 * `Column 1` menu > `Edit column` > `Remove this column`
 
+----
+
 We don't need `Column 1` any more, so we remove it.
 
 ## Undo/Redo
@@ -139,6 +167,35 @@ We don't need `Column 1` any more, so we remove it.
 Don't be afraid to delete data! It's easy to step backwards and forwards through the steps in a project. In the left hand panel, there is a tab for `Undo / Redo`. We can jump back to a prior state just by choosing an earlier item in the list.
 
 In addition to this, we can extract a list of operations and reapply them. This is an advanced topic at this stage, however.
+
+For now, let's jump back to the start:
+
+----
+###### steps:
+
+* Choose the `Undo / Redo` tab on the left
+* Choose the first step `0. Create project`
+
+----
+
+Often, there's more than one way to get to the same result in OR. At any given time, you can only see a fraction of what might occur in the total dataset. In the process of exploring, you may discover irregularities that make previous steps invalid. Do not fear stepping back and repeating steps. Often there are better ways of doing things once you understand the data. For instance, we can create our two columns with a single step:
+
+----
+###### steps:
+
+* `Column 1` menu > `Edit Column` > `Split into several columns`
+* `Separator` => `\t` (check `regular expression`)
+
+----
+
+This should produce an almost identical result in a single step. We'll rename the columns and then the solution is identical:
+
+----
+###### steps:
+
+* `Column 1 1` menu > `Edit column` > `Rename this column` => `heading`
+* `Column 1 2` menu > `Edit column` > `Rename this column` => `indent`
+----
 
 ## Records
 
