@@ -4,7 +4,7 @@ This is an introduction to OpenRefine (henceforth "OR"). The aim is to learn by 
 
 ###### before we get started:
 
-At a certain point in this tutorial, we will start to use regular expressions. This is a special shorthand way of referring to _patterns_ in text. It is _extremely_ useful for doing text wrangling and searching. See [this|https://www.regular-expressions.info/quickstart.html] quickstart guide if you'd like a quick primer on the basics. I'd suggest reading up to and including the section on "Repetition."
+At a certain point in this tutorial, we will start to use regular expressions. This is a special shorthand way of referring to _patterns_ in text. It is _extremely_ useful for doing text wrangling and searching. If you're interested, a [quickstart guide](https://www.regular-expressions.info/quickstart.html) should be sufficient if you'd like an overview of the basics. I'd suggest reading up to and including the section on "Repetition."
 
 However, this introduction avoids the use of regular expressions as much as possible, and explains the regular expression when it's used.
 
