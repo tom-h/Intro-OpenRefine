@@ -25,12 +25,12 @@ One (or more) terms may be followed by a type (e.g., a language, language group,
 
 In this tutorial, we are going to extract all of this structure and check that it is valid. A lot of information is expressed redundantly. We want to end up with a clean list of mappings between a language code, valid names, map references, groups, and codes narrower terms:
 
-code | code_type | term | term_type
----
-D23 | language code |  Gamilaraay, Gamilaroi, Kamilaroi | language name
-D23 | language code |  NSW SH55-12 | language name
-D23 | language code |  Wiradjuric | language group
-D23 | language code |  D39, D15, D28, D27 | language code
+code | code_type     | terms                              | term_type
+--------------------------------------------------------------------------
+D23  | language code |  Gamilaraay, Gamilaroi, Kamilaroi  | language name
+D23  | language code |  NSW SH55-12                       | map reference
+D23  | language code |  Wiradjuric                        | language group
+D23  | language code |  D39, D15, D28, D27                | language code
 
 ###### before we get started:
 
