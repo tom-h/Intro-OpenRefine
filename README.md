@@ -2,6 +2,36 @@
 
 This is an introduction to OpenRefine (henceforth "OR"). The aim is to learn by doing. We will work through cleaning and enhancing a dataset, and in doing so, will be introduced to the many features of OR.
 
+## The Data
+
+We are going to be using a language and peoples thesaurus made available online at [AIATSIS](https://aiatsis.gov.au). This thesaurus is a catalogue of language names and more. Here's the example from the explanatory header:
+```
+Gamilaraay / Gamilaroi / Kamilaroi language (D23) (NSW SH55-12)
+	UF:	D23 (language code)
+	  	Kamilaroi language (D23) (NSW SH55-12)
+	BT:	Wiradjuric language group
+	NT:	Gawambaray language (D39) (Qld SH55-16)
+	  	Gunybaray language (D15) (NSW SI55-4)
+	  	Wiriyaraay language (D28) (NSW SH56-5)
+	  	Yuwaalaraay / Euahlayi / Yuwaaliyaay language (D27) (NSW 
+		SH55-7)
+
+```
+This file uses a lot of convention to inidicate all kinds of structure, and types of information. See the [help page](http://www1.aiatsis.gov.au/language/LanguageHelp.asp) at AIATSIS for further detail.
+
+Indentation indicates a hierarchical structure, and a blank line separates records. The first unindented line starts a record. Abbreviations are used to differentiate subsections containing different types of data (UF "Use for", BT "Broader term", NT "Narrower term", RT "Related term", USE "Use for"). Within each sub-section, separate lines indicate  a link to another record which is related in some way, but note looking at the last line, that some lines wrap around onto the next line.
+
+One (or more) terms may be followed by a type (e.g., a language, language group, language code). There may be synonymous terms separated by a "/". After the term and it't type one or more related codes may be given between parentheses. There are the unique identifiers used by AIATSIS to refer to languages, language groups, language codes and peoples (e.g., D15, D23, D39). Second there are map grid references (e.g., NSW SH55-12, Qld SH55-16).
+
+In this tutorial, we are going to extract all of this structure and check that it is valid. A lot of information is expressed redundantly. We want to end up with a clean list of mappings between a language code, valid names, map references, groups, and codes narrower terms:
+
+code | code_type | term | term_type
+---
+D23 | language code |  Gamilaraay, Gamilaroi, Kamilaroi | language name
+D23 | language code |  NSW SH55-12 | language name
+D23 | language code |  Wiradjuric | language group
+D23 | language code |  D39, D15, D28, D27 | language code
+
 ###### before we get started:
 
 At a certain point in this tutorial, we will start to use regular expressions. This is a special shorthand way of referring to _patterns_ in text. It is _extremely_ useful for doing text wrangling and searching. If you're interested, a [quickstart guide](https://www.regular-expressions.info/quickstart.html) should be sufficient if you'd like an overview of the basics. I'd suggest reading up to and including the section on "Repetition."
@@ -22,27 +52,7 @@ When opening OR, you are first prompted to open an existing project, or create a
 
 ## Creating a new project
 
-To get started, lets load a basic data source: a [language thesaurus](http://www1.aiatsis.gov.au/index.asp) provided by [AIATSIS](https://aiatsis.gov.au). This thesaurus is a catalogue of language names. Here's the example from the explanatory header:
-
-```
-Gamilaraay / Gamilaroi / Kamilaroi language (D23) (NSW SH55-12)
-	UF:	D23 (language code)
-	  	Kamilaroi language (D23) (NSW SH55-12)
-	BT:	Wiradjuric language group
-	NT:	Gawambaray language (D39) (Qld SH55-16)
-	  	Gunybaray language (D15) (NSW SI55-4)
-	  	Wiriyaraay language (D28) (NSW SH56-5)
-	  	Yuwaalaraay / Euahlayi / Yuwaaliyaay language (D27) (NSW 
-		SH55-7)
-
-```
-This file uses a lot of convention to inidicate all kinds of structure, and types of information. See the [help page](http://www1.aiatsis.gov.au/language/LanguageHelp.asp) at AIATSIS for further detail.
-
-Indentation indicates a hierarchical structure, and a blank line separates records. The first unindented line starts a record. Abbreviations are used to differentiate subsections containing different types of data (UF "Use for", BT "Broader term", NT "Narrower term", RT "Related term", USE "Use for"). Within each sub-section, separate lines indicate  a link to another record which is related in some way, but note looking at the last line, that some lines wrap around onto the next line.
-
-One (or more) terms may be followed by a type (e.g., a language, language group, language code). There may be synonymous terms separated by a "/". After the term and it't type one or more related codes may be given between parentheses. There are the unique identifiers used by AIATSIS to refer to languages, language groups, language codes and peoples (e.g., D15, D23, D39). Second there are map grid references (e.g., NSW SH55-12, Qld SH55-16).
-
-In this tutorial, we are going to extract all of this structure and check that it is valid.
+To get started, lets load a basic data source: the [language thesaurus](http://www1.aiatsis.gov.au/index.asp) provided by [AIATSIS](https://aiatsis.gov.au). Download the rtf and copy out just the thesaurus text.
 
 ----
 
